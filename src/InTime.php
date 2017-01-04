@@ -1,6 +1,9 @@
 <?php
 namespace InTime;
 
+use InTime\Traits\Constructors;
+use InTime\Traits\Accessors;
+use InTime\Traits\Mutators;
 use InTime\Traits\Time;
 
 /**
@@ -9,7 +12,7 @@ use InTime\Traits\Time;
  */
 class InTime
 {
-  use Time;
+  use Time, Mutators, Accessors, Constructors;
 
   /**
    * InTime constructor.
@@ -19,22 +22,5 @@ class InTime
   {
     $this->when = $when;
     $this->initialize();
-  }
-
-  /**
-   * @return static
-   */
-  public static function now()
-  {
-    return new static();
-  }
-
-  /**
-   * @param null $when
-   * @return static
-   */
-  public static function create($when = null)
-  {
-    return new static($when);
   }
 }
