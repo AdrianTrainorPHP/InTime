@@ -1,0 +1,21 @@
+{
+  "name": "adriantrainorphp/intime",
+  "description": "DateTime handling package",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Adrian Trainor",
+      "email": "adriantrainor.developer@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^5.7"
+  },
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "InTime\\": "src"
+    }
+  }
+}
