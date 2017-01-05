@@ -9,9 +9,6 @@
       "email": "adriantrainor.developer@gmail.com"
     }
   ],
-  "require-dev": {
-    "phpunit/phpunit": "^5.7"
-  },
   "require": {},
   "autoload": {
     "psr-4": {

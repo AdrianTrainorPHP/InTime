@@ -7,16 +7,4 @@ namespace InTime\Traits;
  */
 trait Accessors
 {
-  public function format()
-  {
-
-  }
-
-  /**
-   * @return Accessors
-   */
-  public function copy()
-  {
-    return clone $this;
-  }
 }

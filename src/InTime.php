@@ -10,7 +10,7 @@ use InTime\Traits\Time;
  * Class InTime
  * @package InTime
  */
-class InTime
+class InTime extends \DateTime
 {
   use Time, Mutators, Accessors, Constructors;
 
@@ -22,5 +22,6 @@ class InTime
   {
     $this->when = $when;
     $this->initialize();
+    parent::__construct($when ?: 'now');
   }
 }

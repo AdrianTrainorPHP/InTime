@@ -1,5 +1,6 @@
 <?php
 namespace InTime\Traits;
+use InTime\InTime;
 
 /**
  * Class Constructors
@@ -31,5 +32,14 @@ trait Constructors
   public static function createFromFormat($format = '', $when = null)
   {
 
+  }
+
+  /**
+   * @return InTime
+   */
+  public function copy()
+  {
+    $clone = clone $this;
+    return $clone;
   }
 }

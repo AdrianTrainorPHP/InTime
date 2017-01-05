@@ -7,347 +7,391 @@ namespace InTime\Traits;
  */
 trait Mutators
 {
-  public function addMillisecond()
+  /**
+   * @param string $method
+   * @param string $timePart
+   * @param int $period
+   * @param string $designator
+   * @return $this
+   */
+  protected function applyInterval($method, $timePart, $period, $designator)
   {
-    return $this->addMilliseconds();
+    $this->$method($timePart . $period . $designator);
+    return $this;
   }
 
+  /**
+   * @return $this
+   */
   public function addSecond()
   {
     return $this->addSeconds();
   }
 
+  /**
+   * @return $this
+   */
   public function addMinute()
   {
     return $this->addMinutes();
   }
 
+  /**
+   * @return $this
+   */
   public function addHour()
   {
     return $this->addHours();
   }
 
+  /**
+   * @return $this
+   */
   public function addDay()
   {
     return $this->addDays();
   }
 
+  /**
+   * @return $this
+   */
   public function addWeek()
   {
     return $this->addWeeks();
   }
 
+  /**
+   * @return $this
+   */
   public function addMonth()
   {
     return $this->addMonths();
   }
 
+  /**
+   * @return $this
+   */
   public function addQuarter()
   {
     return $this->addQuarters();
   }
 
+  /**
+   * @return $this
+   */
   public function addYear()
   {
     return $this->addYears();
   }
 
+  /**
+   * @return $this
+   */
   public function addDecade()
   {
     return $this->addDecades();
   }
 
+  /**
+   * @return $this
+   */
   public function addCentury()
   {
     return $this->addCenturies();
   }
 
+  /**
+   * @return $this
+   */
   public function addMillenium()
   {
     return $this->addMillenia();
   }
 
-  public function addMegaAnnum()
-  {
-    // million years
-    return $this->addMegaAnni();
-  }
-
-  public function addGigaAnnum()
-  {
-    // billion years
-    return $this->addGigaAnni();
-  }
-
-  public function addTeraAnnum()
-  {
-    // trillion years
-    return $this->addTeraAnni();
-  }
-
-  public function subMillisecond()
-  {
-    return $this->subMilliseconds();
-  }
-
+  /**
+   * @return $this
+   */
   public function subSecond()
   {
     return $this->subSeconds();
   }
 
+  /**
+   * @return $this
+   */
   public function subMinute()
   {
     return $this->subMinutes();
   }
 
+  /**
+   * @return $this
+   */
   public function subHour()
   {
     return $this->subHours();
   }
 
+  /**
+   * @return $this
+   */
   public function subDay()
   {
     return $this->subDays();
   }
 
+  /**
+   * @return $this
+   */
   public function subWeek()
   {
     return $this->subWeeks();
   }
 
+  /**
+   * @return $this
+   */
   public function subMonth()
   {
     return $this->subMonths();
   }
 
+  /**
+   * @return $this
+   */
   public function subQuarter()
   {
     return $this->subQuarters();
   }
 
+  /**
+   * @return $this
+   */
   public function subYear()
   {
     return $this->subYears();
   }
 
+  /**
+   * @return $this
+   */
   public function subDecade()
   {
     return $this->subDecades();
   }
 
+  /**
+   * @return $this
+   */
   public function subCentury()
   {
     return $this->subCenturies();
   }
 
+  /**
+   * @return $this
+   */
   public function subMillenium()
   {
     return $this->subMillenia();
   }
 
-  public function subMegaAnnum()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addSeconds($period = 1)
   {
-    // million years
-    return $this->subMegaAnni();
+    return $this->applyInterval('add', 'PT', $period, 'S');
   }
 
-  public function subGigaAnnum()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addMinutes($period = 1)
   {
-    // billion years
-    return $this->subGigaAnni();
+    return $this->applyInterval('add', 'PT', $period, 'M');
   }
 
-  public function subTeraAnnum()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addHours($period = 1)
   {
-    // trillion years
-    return $this->subTeraAnni();
+    return $this->applyInterval('add', 'P', $period, 'H');
   }
 
-  public function addMilliseconds()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addDays($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', $period, 'D');
   }
 
-  public function addSeconds()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addWeeks($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', $period, 'W');
   }
 
-  public function addMinutes()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addMonths($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', $period, 'M');
   }
 
-  public function addHours()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addQuarters($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', ($period * 3), 'M');
   }
 
-  public function addDays()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addYears($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', $period, 'Y');
   }
 
-  public function addWeeks()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addDecades($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', ($period * 10), 'Y');
   }
 
-  public function addMonths()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addCenturies($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', ($period * 100), 'Y');
   }
 
-  public function addQuarters()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function addMillenia($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('add', 'P', ($period * 1000), 'Y');
   }
 
-  public function addYears()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subSeconds($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'PT', $period, 'S');
   }
 
-  public function addDecades()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subMinutes($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'PT', $period, 'M');
   }
 
-  public function addCenturies()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subHours($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'PT', $period, 'H');
   }
 
-  public function addMillenia()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subDays($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', $period, 'D');
   }
 
-  public function addMegaAnni()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subWeeks($period = 1)
   {
-    // million years
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', $period, 'W');
   }
 
-  public function addGigaAnni()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subMonths($period = 1)
   {
-    // billion years
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', $period, 'M');
   }
 
-  public function addTeraAnni()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subQuarters($period = 1)
   {
-    // trillion years
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', ($period * 3), 'M');
   }
 
-  public function subMilliseconds()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subYears($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', $period, 'Y');
   }
 
-  public function subSeconds()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subDecades($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', ($period * 10), 'Y');
   }
 
-  public function subMinutes()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subCenturies($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', ($period * 100), 'Y');
   }
 
-  public function subHours()
+  /**
+   * @param int $period
+   * @return $this
+   */
+  public function subMillenia($period = 1)
   {
-    // todo
-    return $this;
+    return $this->applyInterval('sub', 'P', ($period * 1000), 'Y');
   }
-
-  public function subDays()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subWeeks()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subMonths()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subQuarters()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subYears()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subDecades()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subCenturies()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subMillenia()
-  {
-    // todo
-    return $this;
-  }
-
-  public function subMegaAnni()
-  {
-    // million years
-    // todo
-    return $this;
-  }
-
-  public function subGigaAnni()
-  {
-    // billion years
-    // todo
-    return $this;
-  }
-
-  public function subTeraAnni()
-  {
-    // trillion years
-    // todo
-    return $this;
-  }
-
 
 }
