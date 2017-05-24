@@ -5,7 +5,7 @@ namespace InTime\Traits;
  * Class Mutators
  * @package InTime\Traits
  */
-trait Mutators
+trait Modifiers
 {
   /**
    * @param string $method
@@ -247,7 +247,32 @@ trait Mutators
    */
   public function addMonths($period = 1)
   {
-    return $this->applyInterval('add', 'P', $period, 'M');
+    $day = $this->format('d');
+    $inTime = $this->applyInterval('add', 'P', $period, 'M');
+    if ($inTime->format('d') !== $day) {
+      // monthly adjustment ran into the next month
+      // need to:
+      // - sub 1 month
+      // - set date to the last day of that month
+      $this->applyInterval('sub', 'P', '1', 'M');
+      $this->day($this->daysInMonth());
+    }
+    return $inTime;
+  }
+
+  public function daysInMonth()
+  {
+    // calculate number of days in a month
+    $month = (int) $this->format('m');
+    $year = (int) $this->format('Y');
+    return
+      (
+        $month == 2
+          ?
+          ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29)))
+          :
+          (($month - 1) % 7 % 2 ? 30 : 31)
+      );
   }
 
   /**

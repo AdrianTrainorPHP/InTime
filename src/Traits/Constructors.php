@@ -26,15 +26,6 @@ trait Constructors
   }
 
   /**
-   * @param string $format
-   * @param string|null $when
-   */
-  public static function createFromFormat($format = '', $when = null)
-  {
-
-  }
-
-  /**
    * @return InTime
    */
   public function copy()
